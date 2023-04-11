@@ -19,17 +19,26 @@ class Tuit {
     string text;
     vector<Tuit> replies;
     vector<Element*> elements; //Por que el *
+
+    //Metodos
+public:
+    Tuit& add_element(Element* element); //Retorna Tuit y no void -> para poder llamar metodo sobre lo que retorna
+
 };
 
-class Element { //Clase Abstracta (linea 31)
+class Element { //Clase Abstracta (linea 38)
     int id=0; //para crear un constructor por parametros
     //Un constructor nunca puede ser virtual
 
 public:
-    Element(int id); //Constructor por parametros
+    Element(int id); //Constructor por parametros - no es virtual
+
+
     //El destructor si debe de colocarse de forma virtual para hacer herencia
-    virtual ~Element() = default; //Ese ~ hace que sea virtual
+    virtual ~Element() = default; //Ese ~ hace que sea virtual - genera un arreglo de punteros (v table) esto apunta al codigo del destructor
+
     virtual ostream& show(ostream& out) = 0; //Metodo Abstracto , hasta antes de esto la clase era virtual. Ahora es abstracta
+    // en este caso el vtable apunta a 0/nullptr -> no tiene definiciones
 };
 
 class Media: public Element{ //Declaracion de herencia, hasta aqui tambien es abstracta
