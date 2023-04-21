@@ -15,21 +15,28 @@ using namespace std;
 Tuit::Tuit(string _user_name, string _text) {
     user_name = _user_name;
     text = _text;
-    return;
+    return; 
 }
 
-ostream& operator<<(ostream& out, const Tuit& tuit){
+ostream& operator<<(ostream& out,  Tuit& tuit){
     out << "===============" << endl;
-    out << tuit.user_name << endl;
-    out << tuit.text << endl;
+    out << tuit.getUsername() << endl;
+    out << tuit.getText() << endl;
+    return out;
+}
+
+ostream& show(ostream& out){
+    out << "===============" << endl;
+    out << user_name << endl;
+    out << text << endl;
     return out;
 }
 
 
-//Media::Media(int id, string file_name){
+// Media::Media(int id, string file_name){
 //    Element(id), file_name(file_name){ //Element inicializa a id porque es una var privada de Element.
-//    }
-//}
+//     }
+// //}
 
 Tuit &Tuit::add_element(Element* element){
     this->elements.push_back(element);
@@ -48,5 +55,5 @@ Tuit &Tuit::add_element(Element* element){
 
 int main(){
     Tuit tuit1("kdevivanco", "hola mundo");
-    cout << tuit1;
+    tuit1.show(cout);
 }
