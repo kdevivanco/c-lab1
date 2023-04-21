@@ -25,7 +25,7 @@ ostream& operator<<(ostream& out,  Tuit& tuit){
     return out;
 }
 
-ostream& show(ostream& out){
+ostream& Tuit::show(ostream& out){
     out << "===============" << endl;
     out << user_name << endl;
     out << text << endl;
